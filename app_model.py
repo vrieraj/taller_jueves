@@ -16,7 +16,64 @@ app = Flask(__name__)
 # Ligado al endopoint "/" o sea el home, con el método GET
 @app.route('/', methods=['GET'])
 def hello():
-    return "<h1>Bienvenido a mi API del modelo advertising</h1>"
+    return """
+    <head>
+  <meta charset="UTF-8">
+  <title>Predicción de Ventas - Taller de Machine Learning</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f6f8;
+    }
+
+    header {
+      background-color: #003366;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+
+    p.subtitulo {
+      font-size: 16px;
+      margin-top: 5px;
+      color: #d1e0f0;
+    }
+
+    main {
+      padding: 30px;
+      text-align: center;
+    }
+
+    .intro {
+      max-width: 700px;
+      margin: auto;
+      color: #333;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Predicción de Ventas</h1>
+    <p class="subtitulo">Taller de Machine Learning para Marketing en la Empresa Distribuidora de Muebles</p>
+  </header>
+
+  <main>
+    <div class="intro">
+      <p>Bienvenidos al taller interno de Machine Learning. En esta herramienta podrás explorar cómo los modelos predictivos ayudan a estimar las ventas en función del gasto en marketing (TV, radio y prensa).</p>
+    </div>
+  </main>
+</body>
+</html>
+"""
 
 # Enruta la funcion al endpoint /api/v1/predict
 # Ligado al endpoint '/api/v1/predict', con el método GET
