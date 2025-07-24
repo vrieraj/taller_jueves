@@ -17,7 +17,7 @@ app = Flask(__name__)
 @app.route('/', methods=['GET'])
 def hello():
     return """
-    <head>
+<head>
   <meta charset="UTF-8">
   <title>Predicción de Ventas - Taller de Machine Learning</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -58,6 +58,35 @@ def hello():
       color: #333;
       font-size: 18px;
     }
+
+    form {
+      margin-top: 30px;
+    }
+
+    input[type="number"] {
+      padding: 10px;
+      margin: 10px;
+      width: 150px;
+    }
+
+    input[type="submit"], button {
+      padding: 10px 20px;
+      background-color: #003366;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover, button:hover {
+      background-color: #0059b3;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+      color: #003366;
+    }
   </style>
 </head>
 <body>
@@ -70,6 +99,19 @@ def hello():
     <div class="intro">
       <p>Bienvenidos al taller interno de Machine Learning. En esta herramienta podrás explorar cómo los modelos predictivos ayudan a estimar las ventas en función del gasto en marketing (TV, radio y prensa).</p>
     </div>
+
+    <form action="/api/v1/predict" method="get">
+      <h3>Realizar una predicción:</h3>
+      <input type="number" step="any" name="tv" placeholder="Gasto en TV" required>
+      <input type="number" step="any" name="radio" placeholder="Gasto en Radio" required>
+      <input type="number" step="any" name="newspaper" placeholder="Gasto en Prensa" required><br>
+      <input type="submit" value="Predecir Ventas">
+    </form>
+
+    <form action="/api/v1/retrain" method="get" onsubmit="return confirm('¿Seguro que quieres reentrenar el modelo?')">
+      <h3>Reentrenar el modelo:</h3>
+      <button type="submit">Reentrenar Modelo</button>
+    </form>
   </main>
 </body>
 </html>
